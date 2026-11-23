@@ -1,0 +1,62 @@
+/* ===== Cores da identidade (estilo neon da capa) ===== */
+:root {
+  --fundo: #0c0618;          /* roxo quase preto */
+  --painel: #170d2e;         /* janelas e barras */
+  --painel-claro: #2a1a4d;
+  --borda: rgba(0, 240, 255, 0.35);
+  --rosa: #ff2bd6;
+  --ciano: #00f0ff;
+  --lima: #b6ff3b;
+  --texto: #f3eaff;
+  --cinza: #9d8cc4;
+
+  --fonte: "Share Tech Mono", "Cascadia Code", Consolas, monospace;
+  --fonte-titulo: "Orbitron", "Segoe UI", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fonte);
+  color: var(--texto);
+  background: var(--fundo);
+  overflow-x: hidden;
+}
+
+/* quando o monitor está em tela cheia, a página para de rolar */
+body.travado {
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ciano);
+  outline-offset: 3px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

@@ -1,0 +1,356 @@
+/* ===== Papel de parede (synthwave, feito só com CSS) =====
+   Quer usar uma imagem? Troque o valor por: url("../assets/img/wallpaper.webp") center / cover */
+.tela {
+  --papel-de-parede:
+    radial-gradient(circle at 50% 58%, #ffe27a 0, #ff8a5b 7%, #ff2bd6 12%, rgba(255, 43, 214, 0) 12.3%),
+    radial-gradient(ellipse at 50% 62%, rgba(255, 43, 214, 0.45), transparent 45%),
+    linear-gradient(180deg, #07021a 0%, #1d0840 34%, #4a1060 56%, #12062a 62%, #0a0418 100%);
+}
+
+/* ===== Área de trabalho ===== */
+.desktop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--papel-de-parede);
+  animation: aparecer 0.6s ease-out;
+}
+
+/* chão quadriculado em perspectiva, andando devagar */
+.desktop::before {
+  content: "";
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  top: 62%;
+  bottom: -40%;
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 240, 255, 0.45) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(0deg, rgba(255, 43, 214, 0.45) 0 1px, transparent 1px 44px);
+  transform: perspective(260px) rotateX(62deg);
+  transform-origin: top center;
+  animation: chao 3s linear infinite;
+  -webkit-mask-image: linear-gradient(transparent, #000 25%);
+  mask-image: linear-gradient(transparent, #000 25%);
+  pointer-events: none;
+}
+
+/* listras no sol */
+.desktop::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 26%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: repeating-linear-gradient(180deg, transparent 0 9px, rgba(18, 6, 42, 0.9) 9px 12px);
+  -webkit-mask-image: linear-gradient(transparent 50%, #000 50%);
+  mask-image: linear-gradient(transparent 50%, #000 50%);
+  pointer-events: none;
+}
+
+@keyframes chao {
+  to { background-position: 0 0, 0 44px; }
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(1.02); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ===== Ícones ===== */
+.icones {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 22px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(auto-fill, 108px);
+  justify-content: start;
+  gap: 6px 14px;
+  height: calc(100% - 50px);
+}
+
+.icone {
+  width: 96px;
+  padding: 10px 6px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.icone:hover,
+.icone:focus-visible {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: var(--borda);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.icone__figura {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: rgba(23, 13, 46, 0.85);
+  border: 1.5px solid var(--ciano);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.45), 0 0 4px rgba(0, 240, 255, 0.6) inset;
+}
+
+.icone__figura svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: var(--ciano);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 4px rgba(0, 240, 255, 0.8));
+}
+
+.icone--destaque .icone__figura {
+  border-color: var(--rosa);
+  box-shadow: 0 0 14px rgba(255, 43, 214, 0.55), 0 0 4px rgba(255, 43, 214, 0.6) inset;
+}
+
+.icone--destaque .icone__figura svg {
+  stroke: var(--rosa);
+  filter: drop-shadow(0 0 4px rgba(255, 43, 214, 0.9));
+}
+
+.icone__nome {
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.2;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(12, 6, 24, 0.75);
+  letter-spacing: 0.04em;
+}
+
+/* ===== Janela ===== */
+.janela {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  width: min(680px, 88%);
+  max-height: calc(100% - 100px);
+  transform: translate(-50%, -54%);
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background: rgba(23, 13, 46, 0.92);
+  border: 1px solid var(--borda);
+  box-shadow: 0 0 0 1px rgba(255, 43, 214, 0.25), 0 0 30px rgba(0, 240, 255, 0.2), 0 24px 60px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+  animation: abrir-janela 0.25s ease-out;
+}
+
+@keyframes abrir-janela {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.96); }
+  to   { opacity: 1; transform: translate(-50%, -54%) scale(1); }
+}
+
+.janela__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px 8px 14px;
+  background: rgba(12, 6, 24, 0.9);
+  border-bottom: 1px solid var(--rosa);
+  box-shadow: 0 1px 10px rgba(255, 43, 214, 0.35);
+}
+
+.janela__titulo {
+  margin: 0;
+  font-family: var(--fonte-titulo);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ciano);
+}
+
+.janela__titulo::before {
+  content: "> ";
+  color: var(--rosa);
+}
+
+.janela__fechar {
+  width: 30px;
+  height: 30px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 14px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.janela__fechar:hover {
+  background: rgba(255, 43, 214, 0.25);
+  border-color: var(--rosa);
+}
+
+.janela__conteudo {
+  padding: 20px 22px 24px;
+  overflow-y: auto;
+  line-height: 1.6;
+}
+
+.janela__conteudo h2 {
+  margin: 0 0 8px;
+  font-family: var(--fonte-titulo);
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 12px rgba(255, 43, 214, 0.5);
+}
+
+.janela__conteudo p {
+  margin: 0 0 12px;
+  color: #e4d8ff;
+}
+
+.aviso-em-breve {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 12px;
+  border: 1px solid var(--lima);
+  border-radius: 4px;
+  color: var(--lima);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  box-shadow: 0 0 10px rgba(182, 255, 59, 0.3);
+}
+
+/* ===== Barra de tarefas ===== */
+.barra-tarefas {
+  position: absolute;
+  z-index: 6;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(12, 6, 24, 0.82);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--borda);
+  box-shadow: 0 -1px 12px rgba(0, 240, 255, 0.2);
+}
+
+.barra-tarefas__inicio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px 4px 4px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font-family: var(--fonte-titulo);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  transition: background 0.15s;
+}
+
+.barra-tarefas__inicio:hover {
+  background: rgba(255, 43, 214, 0.22);
+}
+
+.barra-tarefas__inicio img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--rosa);
+  box-shadow: 0 0 8px rgba(255, 43, 214, 0.6);
+}
+
+.barra-tarefas__direita {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.barra-tarefas__status {
+  font-size: 12px;
+  color: var(--lima);
+}
+
+.barra-tarefas__status::before {
+  content: "●";
+  margin-right: 5px;
+  text-shadow: 0 0 6px var(--lima);
+}
+
+.botao-tela-cheia {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  background: transparent;
+  font-size: 16px;
+  line-height: 1;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.botao-tela-cheia:hover {
+  background: rgba(0, 240, 255, 0.15);
+  border-color: var(--ciano);
+}
+
+.barra-tarefas__relogio {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ciano);
+}
+
+/* ===== Tela pequena (celular ou monitor estreito): ícones em grade e janela ocupando tudo =====
+   Usa o tamanho da TELA DO MONITOR, não da página. */
+@container tela (max-width: 640px) {
+  .icones {
+    grid-auto-flow: row;
+    grid-template-rows: none;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-content: start;
+    padding: 22px 10px;
+    height: auto;
+  }
+
+  .janela {
+    inset: 0 0 50px 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: none;
+    transform: none;
+    border-radius: 0;
+    animation: none;
+  }
+
+  .barra-tarefas__inicio span,
+  .barra-tarefas__status {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desktop,
+  .desktop::before,
+  .janela { animation: none; }
+}

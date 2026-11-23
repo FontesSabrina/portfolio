@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabrina Dev | Portfólio</title>
+  <meta name="description" content="Portfólio de Sabrina Dev: web, mobile e games.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/capa.css">
+  <link rel="stylesheet" href="css/mesa.css">
+  <link rel="stylesheet" href="css/abertura.css">
+  <link rel="stylesheet" href="css/desktop.css">
+  <link rel="stylesheet" href="css/projetos.css">
+</head>
+<body>
+
+  <!-- ===================== 1. CAPA ANIMADA ===================== -->
+  <section class="capa" id="capa">
+    <div class="camada quarto" id="quarto">
+      <div class="palco">
+        <img class="fundo" src="assets/capa/quarto.webp" alt="">
+      </div>
+    </div>
+    <div class="camada vinheta"></div>
+
+    <div class="camada p-wrap" id="pWrap">
+      <div class="personagem-box">
+        <div class="g-wrap" id="gWrap">
+          <div class="personagem" id="personagem">
+            <img src="assets/capa/pose1.webp" data-pose="pose1" class="on" alt="">
+            <img src="assets/capa/pose2.webp" data-pose="pose2" alt="">
+            <img src="assets/capa/pose3.webp" data-pose="pose3" alt="">
+            <img src="assets/capa/pose4.webp" data-pose="pose4" alt="">
+            <img src="assets/capa/pose5.webp" data-pose="pose5" alt="">
+            <img src="assets/capa/pose6.webp" data-pose="pose6" alt="">
+            <!-- recortes da boca (por cima da pose 4) -->
+            <img class="recorte boca" src="assets/capa/boca_A.webp" data-boca="A" alt="">
+            <img class="recorte boca" src="assets/capa/boca_E.webp" data-boca="E" alt="">
+            <img class="recorte boca" src="assets/capa/boca_O.webp" data-boca="O" alt="">
+            <img class="recorte boca" src="assets/capa/boca_M.webp" data-boca="M" alt="">
+            <img class="recorte boca" src="assets/capa/boca_S.webp" data-boca="S" alt="">
+            <!-- recortes dos olhos -->
+            <img class="recorte olho" src="assets/capa/olho_meio.webp" data-olho="meio" alt="">
+            <img class="recorte olho" src="assets/capa/olho_fechado.webp" data-olho="fechado" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro" id="intro">
+      <p class="tag">&gt; <span id="tagTexto">aguardando conexão</span><span class="cursor">_</span></p>
+      <h1 data-text="SABRINA">SABRINA</h1>
+      <p class="cargo">Gestão da TI · <b>Dev</b> · Design</p>
+    </div>
+
+    <div class="legenda" id="legenda"></div>
+
+    <div class="hud" id="hud">
+      ID: SABRINA_B<br>
+      STATUS: <span class="ok" id="status">OFFLINE</span><br>
+      MODO: PORTFÓLIO
+      <div class="barra"><i id="barra"></i></div>
+    </div>
+    <div class="binario"><span id="bin"></span></div>
+
+    <!-- camada da frente: a Bella fica na frente da personagem (a cama está mais perto da câmera) -->
+    <div class="camada quarto frente" id="frente">
+      <div class="palco">
+        <div class="cachorra" id="cachorra">
+          <div class="corpo">
+            <img src="assets/capa/cachorra1.webp" data-dog="1" class="on" alt="">
+            <img src="assets/capa/cachorra2.webp" data-dog="2" alt="">
+            <img src="assets/capa/cachorra3.webp" data-dog="3" alt="">
+            <img src="assets/capa/cachorra4.webp" data-dog="4" alt="">
+            <img src="assets/capa/cachorra5.webp" data-dog="5" alt="">
+            <img src="assets/capa/cachorra6.webp" data-dog="6" alt="">
+          </div>
+          <div class="zzz on" id="zzz"><span>z</span><span>z</span><span>Z</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="camada scan"></div>
+    <div class="camada flash" id="flash"></div>
+
+    <a class="desca" id="desca" href="#mesa">↓ DESÇA</a>
+    <button class="repetir" id="repetir">↻ repetir</button>
+
+    <div class="iniciar" id="iniciar">
+      <button class="btn" id="btnIniciar">[ CLIQUE PARA INICIAR ] 🔊</button>
+    </div>
+  </section>
+
+  <!-- ===================== 2. MESA COM O MONITOR ===================== -->
+  <section class="mesa" id="mesa" aria-label="Computador da Sabrina">
+    <p class="mesa__dica">&gt; ligue o computador e explore_</p>
+
+    <div class="monitor" id="monitor">
+      <div class="tela" id="tela">
+
+        <!-- ABERTURA (dentro do monitor) -->
+        <section class="abertura" id="abertura" aria-label="Abertura do portfólio">
+
+          <!-- 1. Tela desligada -->
+          <div class="etapa etapa--desligada ativa" id="etapaDesligada">
+            <button class="botao-ligar" id="btnLigar" aria-label="Ligar o computador">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3v8" />
+                <path d="M6.3 6.3a8 8 0 1 0 11.4 0" />
+              </svg>
+            </button>
+            <p class="dica-ligar">clique para ligar</p>
+          </div>
+
+          <!-- 2. Ligando -->
+          <div class="etapa etapa--ligando" id="etapaLigando" aria-hidden="true">
+            <p class="logo">SABRINA<span>//DEV</span></p>
+            <div class="barra"><div class="barra__progresso"></div></div>
+            <ul class="boot" id="boot"></ul>
+          </div>
+
+          <!-- 3. Login -->
+          <div class="etapa etapa--login" id="etapaLogin" aria-hidden="true">
+            <img class="login__avatar" src="assets/img/avatar.webp" alt="Avatar da Sabrina" width="400" height="400">
+            <p class="login__nome">Sabrina</p>
+            <div class="login__senha" aria-hidden="true"><span id="pontosSenha"></span></div>
+            <p class="login__status" id="statusLogin">logando<span class="reticencias"></span></p>
+          </div>
+
+          <!-- 4. Boas-vindas -->
+          <div class="etapa etapa--boasvindas" id="etapaBoasVindas" aria-live="polite">
+            <p class="boasvindas__titulo" id="textoTitulo"></p>
+            <p class="boasvindas__sub" id="textoSub"></p>
+          </div>
+
+          <button class="botao-pular" id="btnPular">Pular ⏭</button>
+        </section>
+
+        <!-- ÁREA DE TRABALHO (dentro do monitor) -->
+        <main class="desktop" id="desktop" hidden>
+          <ul class="icones" id="icones" aria-label="Aplicativos"></ul>
+
+          <!-- Janela (o conteúdo muda conforme o app) -->
+          <div class="janela" id="janela" role="dialog" aria-modal="false" aria-labelledby="janelaTitulo" hidden>
+            <header class="janela__topo">
+              <p class="janela__titulo" id="janelaTitulo"></p>
+              <button class="janela__fechar" id="btnFecharJanela" aria-label="Fechar janela">✕</button>
+            </header>
+            <div class="janela__conteudo" id="janelaConteudo"></div>
+          </div>
+
+          <footer class="barra-tarefas">
+            <button class="barra-tarefas__inicio" id="btnInicio" aria-label="Rever a abertura">
+              <img src="assets/img/avatar.webp" alt="" width="28" height="28">
+              <span>SABRINA//DEV</span>
+            </button>
+            <div class="barra-tarefas__direita">
+              <span class="barra-tarefas__status">online</span>
+              <button class="botao-tela-cheia" id="btnTelaCheia" aria-label="Tela cheia" title="Tela cheia">⛶</button>
+              <p class="barra-tarefas__relogio" id="relogio"></p>
+            </div>
+          </footer>
+        </main>
+
+      </div>
+      <div class="monitor__queixo"><span class="monitor__led"></span>SABRINA//OS</div>
+    </div>
+  </section>
+
+  <script src="js/capa.js"></script>
+  <script src="js/projetos.js"></script>
+  <script src="js/apps.js"></script>
+  <script src="js/mesa.js"></script>
+  <script src="js/abertura.js"></script>
+  <script src="js/desktop.js"></script>
+</body>
+</html>

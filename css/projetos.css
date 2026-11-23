@@ -1,0 +1,310 @@
+/* ===== Galeria de projetos (dentro da janela) ===== */
+
+/* janela mais larga para a galeria */
+.janela--larga {
+  width: min(1000px, 94%);
+  max-height: calc(100% - 70px);
+}
+
+/* ---------- Filtros ---------- */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.filtro {
+  padding: 6px 14px;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  background: transparent;
+  font-size: 13px;
+  color: var(--cinza);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.filtro:hover {
+  color: var(--texto);
+  border-color: var(--ciano);
+}
+
+.filtro.ativo {
+  color: var(--fundo);
+  background: var(--ciano);
+  border-color: var(--ciano);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+}
+
+/* ---------- Cards ---------- */
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 10px;
+  background: rgba(12, 6, 24, 0.7);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--rosa);
+  box-shadow: 0 0 18px rgba(255, 43, 214, 0.35);
+  outline: none;
+}
+
+.card__img {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #05030b;
+}
+
+.card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+.card__img img.topo { object-position: top; }
+.card:hover .card__img img { transform: scale(1.05); }
+
+.card__texto {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 12px 12px;
+}
+
+.card__texto strong {
+  font-family: var(--fonte-titulo);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.card__texto small {
+  color: var(--cinza);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* ---------- Etiquetas ---------- */
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.etiquetas em {
+  font-style: normal;
+  font-size: 11px;
+  padding: 1px 8px;
+  border: 1px solid rgba(182, 255, 59, 0.5);
+  border-radius: 4px;
+  color: var(--lima);
+}
+
+/* ---------- Terminal (para projetos sem imagem) ---------- */
+.terminal {
+  height: 100%;
+  min-height: 200px;
+  border-radius: 8px;
+  background: #07040f;
+  border: 1px solid rgba(182, 255, 59, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal__topo {
+  display: flex;
+  gap: 6px;
+  padding: 7px 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.terminal__topo i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--rosa);
+}
+.terminal__topo i:nth-child(2) { background: #ffd34d; }
+.terminal__topo i:nth-child(3) { background: var(--lima); }
+
+.terminal pre {
+  margin: 0;
+  padding: 12px 14px;
+  overflow: auto;
+  font-family: var(--fonte);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--lima);
+  white-space: pre-wrap;
+}
+
+.terminal--mini {
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+}
+.terminal--mini pre {
+  padding: 8px 10px;
+  font-size: 9.5px;
+  line-height: 1.35;
+  overflow: hidden;
+}
+
+/* ---------- Detalhe do projeto ---------- */
+.voltar {
+  margin-bottom: 14px;
+  padding: 5px 12px;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  background: transparent;
+  font-size: 13px;
+  color: var(--ciano);
+}
+.voltar:hover { background: rgba(0, 240, 255, 0.12); }
+
+.galeria {
+  margin-bottom: 16px;
+}
+
+.galeria__palco {
+  position: relative;
+  height: min(52vh, 420px);
+  border-radius: 8px;
+  background: #05030b;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.galeria__palco img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+.galeria__seta {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--borda);
+  border-radius: 50%;
+  background: rgba(12, 6, 24, 0.75);
+  font-size: 22px;
+  line-height: 1;
+  transition: background 0.15s, border-color 0.15s;
+}
+.galeria__seta:hover {
+  background: rgba(255, 43, 214, 0.3);
+  border-color: var(--rosa);
+}
+.galeria__seta--esq { left: 10px; }
+.galeria__seta--dir { right: 10px; }
+
+.galeria__minis {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.mini {
+  flex: 0 0 auto;
+  width: 76px;
+  height: 50px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: #05030b;
+  overflow: hidden;
+  opacity: 0.55;
+  transition: opacity 0.15s, border-color 0.15s;
+}
+.mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.mini:hover { opacity: 0.9; }
+.mini.ativo {
+  opacity: 1;
+  border-color: var(--rosa);
+  box-shadow: 0 0 8px rgba(255, 43, 214, 0.5);
+}
+
+.destaques {
+  margin: 0 0 14px;
+  padding-left: 0;
+  list-style: none;
+}
+.destaques li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 4px;
+  color: #e4d8ff;
+}
+.destaques li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--rosa);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px !important;
+}
+
+.links a {
+  padding: 8px 16px;
+  border: 1px solid var(--rosa);
+  border-radius: 6px;
+  color: var(--texto);
+  text-decoration: none;
+  font-size: 14px;
+  background: rgba(255, 43, 214, 0.12);
+  transition: background 0.15s, box-shadow 0.15s;
+}
+.links a:hover {
+  background: rgba(255, 43, 214, 0.3);
+  box-shadow: 0 0 14px rgba(255, 43, 214, 0.45);
+}
+.links a:first-child {
+  border-color: var(--ciano);
+  background: rgba(0, 240, 255, 0.12);
+}
+
+/* tela pequena */
+@container tela (max-width: 640px) {
+  .janela--larga { width: 100%; max-height: none; }
+  .cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .card__texto small { display: none; }
+  .galeria__palco { height: 220px; }
+}

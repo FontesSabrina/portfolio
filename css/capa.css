@@ -1,0 +1,131 @@
+/* ===== CAPA ANIMADA (16:4) =====
+   Quarto ao fundo, a personagem em camadas (poses, bocas e olhos), a Bella na frente,
+   HUD, legenda e tela de iniciar. */
+
+/* ================= CAPA 16:4 ================= */
+.capa p{margin:0}
+.capa{position:relative;width:100%;aspect-ratio:4/1;min-height:240px;overflow:hidden;background:#0c0618;isolation:isolate}
+@media (max-width:760px){ .capa{aspect-ratio:16/10} }
+
+.camada{position:absolute;inset:0;will-change:transform}
+
+/* Quarto (fundo) */
+.quarto{inset:-4%;container-type:size}
+/* "palco" com a mesma proporção do quarto, cobrindo a capa (igual a background-size:cover).
+   Assim a cachorrinha pode ser posicionada em cima da cama em %, e acompanha o quarto. */
+.palco{position:absolute;left:50%;top:88%;width:max(100%, 179.14cqh);aspect-ratio:2576/1438;transform:translate(-50%,-88%)}
+.palco .fundo{position:absolute;inset:0;width:100%;height:100%;filter:saturate(1.05) brightness(.92)}
+
+/* Cachorrinha */
+.frente{pointer-events:none;z-index:8}
+.cachorra{position:absolute;left:77%;top:77%;width:12%;aspect-ratio:900/556}
+@media (max-width:760px){ .cachorra{left:64.5%;top:79%;width:17%} }
+.cachorra .corpo{position:absolute;inset:0;transform-origin:50% 95%;animation:respiraDog 2.6s ease-in-out infinite}
+@keyframes respiraDog{50%{transform:scale(1.012,1.022)}}
+.cachorra img{position:absolute;inset:0;width:100%;height:100%;opacity:0;filter:drop-shadow(0 0 5px rgba(0,240,255,.45)) drop-shadow(0 0 10px rgba(255,43,214,.25))}
+.cachorra img.on{opacity:1}
+.zzz{position:absolute;left:80%;top:8%;width:20%;height:40%;pointer-events:none;opacity:0;transition:opacity .4s}
+.zzz.on{opacity:1}
+.zzz span{position:absolute;bottom:0;left:0;font-family:Orbitron,var(--fonte);font-weight:700;color:var(--ciano);
+  text-shadow:0 0 8px var(--ciano);font-size:clamp(8px,1vw,15px);opacity:0;animation:zz 3s ease-out infinite}
+.zzz span:nth-child(2){animation-delay:1s;font-size:clamp(10px,1.25vw,19px)}
+.zzz span:nth-child(3){animation-delay:2s;font-size:clamp(12px,1.5vw,23px)}
+@keyframes zz{0%{transform:translate(0,0);opacity:0}20%{opacity:1}100%{transform:translate(160%,-260%);opacity:0}}
+
+/* Escurece a esquerda para o texto ficar legível */
+.vinheta{background:
+    linear-gradient(90deg, rgba(12,6,24,.88) 0%, rgba(12,6,24,.55) 28%, transparent 48%),
+    radial-gradient(ellipse at 58% 60%, transparent 40%, rgba(12,6,24,.55) 100%);
+  pointer-events:none}
+
+/* Personagem: várias camadas empilhadas.
+   p-wrap = parallax do mouse | g-wrap = glitch | personagem = respiração */
+.personagem-box{position:absolute;height:134.4%;aspect-ratio:2576/1438;top:-2.8%;left:58%;transform:translateX(-50%)}
+@media (max-width:760px){ .personagem-box{left:70%;height:104%;top:6%} }
+.g-wrap,.personagem{position:absolute;inset:0}
+.personagem{transform-origin:50% 100%;animation:respira 3.2s ease-in-out infinite}
+@keyframes respira{
+  0%,100%{transform:scale(1) rotate(0deg)}
+  50%{transform:scale(1.007) rotate(.25deg)}
+}
+.personagem img{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .12s linear;user-select:none;pointer-events:none}
+.personagem img.on{opacity:1}
+/* bocas e olhos: recortes posicionados em cima da pose 4, sem transição (troca seca, como em desenho animado) */
+.personagem img.recorte{inset:auto;transition:none}
+.personagem img.boca{left:40.373%;top:47.983%;width:19.798%;height:22.949%}
+.personagem img.olho{left:38.820%;top:32.337%;width:23.680%;height:10.431%}
+
+/* Glitch: separa as cores (RGB) e treme por alguns milissegundos */
+.g-wrap.glitch{animation:treme .22s steps(2) 1}
+.g-wrap.glitch .personagem{filter:drop-shadow(-6px 0 rgba(255,43,214,.85)) drop-shadow(6px 0 rgba(0,240,255,.85))}
+@keyframes treme{
+  0%{transform:translate(0,0);clip-path:inset(0 0 0 0)}
+  25%{transform:translate(-8px,1px);clip-path:inset(18% 0 52% 0)}
+  50%{transform:translate(7px,-1px);clip-path:inset(46% 0 20% 0)}
+  75%{transform:translate(-3px,0);clip-path:inset(0 0 70% 0)}
+  100%{transform:translate(0,0);clip-path:inset(0 0 0 0)}
+}
+
+/* Linhas de monitor e ruído */
+.scan{pointer-events:none;background:repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 1px, transparent 1px 3px);mix-blend-mode:multiply;z-index:20}
+.flash{pointer-events:none;background:#fff;opacity:0;z-index:21;mix-blend-mode:overlay}
+
+/* ===== Texto da esquerda ===== */
+.intro{position:absolute;left:4%;top:12%;z-index:10;max-width:40%}
+.tag{font-size:clamp(10px,1vw,14px);color:var(--ciano);letter-spacing:.12em;opacity:.9}
+.tag .cursor{animation:pisca 1s steps(1) infinite}
+@keyframes pisca{50%{opacity:0}}
+h1{font-family:Orbitron,var(--fonte);font-weight:900;font-size:clamp(30px,5.2vw,86px);letter-spacing:.06em;line-height:1;margin:.12em 0 .1em;position:relative;
+   text-shadow:0 0 18px rgba(255,43,214,.55)}
+h1::before,h1::after{content:attr(data-text);position:absolute;inset:0;opacity:.8}
+h1::before{color:var(--rosa);transform:translate(-3px,0);clip-path:inset(0 0 55% 0);animation:fatia 4s infinite steps(1)}
+h1::after{color:var(--ciano);transform:translate(3px,0);clip-path:inset(55% 0 0 0);animation:fatia 4s infinite steps(1) reverse}
+@keyframes fatia{0%,92%,100%{transform:translate(0,0)}93%{transform:translate(-5px,0)}95%{transform:translate(4px,0)}97%{transform:translate(-2px,0)}}
+.cargo{font-size:clamp(11px,1.15vw,17px);color:#e9d9ff;letter-spacing:.08em}
+.cargo b{color:var(--lima);font-weight:400}
+
+/* ===== Legenda da fala ===== */
+.legenda{position:absolute;left:4%;bottom:10%;z-index:10;max-width:38%;min-height:2.6em;
+  font-size:clamp(11px,1.15vw,17px);line-height:1.35;padding:.55em .8em;border-left:2px solid var(--rosa);
+  background:linear-gradient(90deg,rgba(12,6,24,.85),rgba(12,6,24,.35));opacity:0;transition:opacity .3s}
+.legenda.on{opacity:1}
+.legenda::after{content:"▌";color:var(--rosa);animation:pisca .8s steps(1) infinite;margin-left:2px}
+
+/* ===== HUD da direita ===== */
+.hud{position:absolute;right:2.5%;top:10%;z-index:10;font-size:clamp(9px,.85vw,13px);line-height:1.55;color:var(--ciano);
+     padding:.6em .8em;border:1px solid rgba(0,240,255,.45);background:rgba(8,20,30,.45);box-shadow:0 0 18px rgba(0,240,255,.2) inset}
+.hud .ok{color:var(--lima)}
+.hud .barra{height:4px;margin-top:.4em;background:rgba(0,240,255,.15);overflow:hidden}
+.hud .barra i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ciano),var(--rosa));transition:width 1.2s ease}
+.binario{position:absolute;right:0;bottom:1.5%;width:30%;opacity:.6;z-index:9;overflow:hidden;white-space:nowrap;font-size:clamp(9px,.8vw,12px);color:rgba(182,255,59,.55)}
+.binario span{display:inline-block;animation:corre 18s linear infinite}
+@keyframes corre{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (max-width:760px){
+  .hud,.binario{display:none}
+  .intro{max-width:46%;top:9%} h1{font-size:clamp(22px,7vw,40px)} .cargo{font-size:10px}
+  .legenda{max-width:48%;font-size:10.5px;bottom:7%}
+  .capa .desca{left:70%} .capa .repetir{top:4%;bottom:auto;left:auto;right:3%}
+}
+
+/* ===== Tela de iniciar ===== */
+.iniciar{position:absolute;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;
+  background:rgba(8,4,18,.55);backdrop-filter:blur(2px);transition:opacity .4s}
+.iniciar.some{opacity:0;pointer-events:none}
+.btn{font-family:var(--fonte);font-size:clamp(13px,1.3vw,19px);letter-spacing:.2em;color:#fff;cursor:pointer;
+  background:rgba(255,43,214,.12);border:1px solid var(--rosa);padding:.9em 1.6em;box-shadow:0 0 22px rgba(255,43,214,.45);
+  animation:pulso 1.6s ease-in-out infinite}
+.btn:hover{background:rgba(255,43,214,.3)}
+@keyframes pulso{50%{box-shadow:0 0 34px rgba(0,240,255,.6);border-color:var(--ciano)}}
+
+/* Seta "desça" e repetir */
+.desca{position:absolute;left:58%;bottom:5%;transform:translateX(-50%);z-index:12;color:var(--lima);text-decoration:none;
+  font-size:clamp(11px,1.05vw,15px);letter-spacing:.25em;opacity:0;pointer-events:none;transition:opacity .4s;text-shadow:0 0 10px var(--lima)}
+.desca.on{opacity:1;pointer-events:auto;animation:desce 1.2s ease-in-out infinite}
+@keyframes desce{50%{transform:translate(-50%,6px)}}
+.repetir{position:absolute;right:2.5%;top:44%;z-index:12;font-family:var(--fonte);font-size:12px;color:#fff;background:rgba(0,0,0,.4);
+  border:1px solid rgba(255,255,255,.35);padding:.45em .8em;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .4s}
+.repetir.on{opacity:1;pointer-events:auto}
+
+@media (prefers-reduced-motion: reduce){
+  .personagem{animation:none} .binario span{animation:none}
+}
