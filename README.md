@@ -1,4 +1,5 @@
 # Sabrina Dev | Portfólio
+git remote set-url origin https://github.com/FontesSabrina/portfolio.git
 
 Portfólio em duas partes, feito com **HTML, CSS e JavaScript puro**, no estilo neon/cyberpunk:
 
