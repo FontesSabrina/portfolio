@@ -1,78 +1,110 @@
-# Sabrina Dev | Portfólio
-git remote set-url origin https://github.com/FontesSabrina/portfolio.git
+<h1 align="center">SABRINA // DEV — Portfólio</h1>
 
-Portfólio em duas partes, feito com **HTML, CSS e JavaScript puro**, no estilo neon/cyberpunk:
+<p align="center">
+  Portfólio interativo em estilo <b>neon / cyberpunk</b>, feito com <b>HTML, CSS e JavaScript puro</b>, sem frameworks e sem bibliotecas.
+</p>
 
-1. **Capa animada (16:4):** a Sabrina levanta o óculos, sorri e fala com o próprio áudio. A Bella dorme na cama e acorda.
-2. **Mesa com o monitor:** ao descer, aparece o computador do quarto. Dentro do monitor roda o "sistema" do portfólio, com ícones, janelas e barra de tarefas.
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white" alt="GitHub Pages">
+</p>
 
-## Como abrir
+<p align="center">
+  <a href="https://fontessabrina.github.io/Portf-lio/"><b>🔗 Acesse o portfólio online</b></a>
+</p>
 
-Dê dois cliques no `index.html`. Não precisa de servidor nem de instalar nada.
-(As fontes Orbitron e Share Tech Mono vêm do Google Fonts; sem internet, o navegador usa fontes parecidas.)
+---
 
-## O que já funciona
+## 💡 Sobre o projeto
 
-**Capa**
-- Tela "[ CLIQUE PARA INICIAR ] 🔊" (os navegadores só tocam som depois de um clique).
-- Poses levantando o óculos, piscadas, sorriso com covinha, boca sincronizada com o volume da voz e legenda digitando.
-- A Bella: dorme com "zzz", abre os olhos, levanta a cabeça quando a fala começa.
-- Parallax com o mouse, glitch, HUD e seta "↓ DESÇA", que leva até a mesa.
+Este é o meu portfólio pessoal. Em vez de uma página comum com uma lista de projetos, criei uma **experiência interativa**: o visitante entra no meu quarto, liga o computador e navega pelos meus projetos como se estivesse usando um sistema operacional.
 
-**Monitor**
-1. **Tela desligada** com o botão de ligar brilhando.
-2. **Ligando:** logo "SABRINA//DEV", barra de carregamento e linhas de boot.
-3. **Login:** avatar, senha se preenchendo sozinha e "logando...".
-4. **Boas-vindas** digitadas letra por letra.
-5. **Área de trabalho** synthwave (sol e chão quadriculado andando), ícones neon, janelas e barra de tarefas com relógio.
+O objetivo foi praticar e mostrar, num projeto real, **manipulação do DOM, animações em CSS, controle de estados e organização de código em JavaScript puro**.
 
-- **Pular** (ou Esc) vai direto para a área de trabalho.
-- Se a pessoa recarregar a página, o monitor já abre ligado.
-- Clicar em "SABRINA//DEV" na barra de tarefas desliga o monitor e mostra a abertura de novo.
-- **⛶** na barra de tarefas deixa o monitor em tela cheia (Esc sai).
+## ✨ Funcionalidades
 
-**Projetos (8, tirados do GitHub)**
-- Galeria com filtros: Todos, Jogos, Web, Mobile e Dados & mapas.
-- Cada card abre o detalhe com carrossel de imagens, descrição, destaques, tecnologias e links (jogar / GitHub).
-- Os ícones **Jogos**, **Web** e **Apps** abrem a mesma galeria, já filtrada.
-- Projetos sem imagem (Mario Kart.JS e Desafio Dimensa) aparecem como uma tela de terminal.
-- No celular, o monitor fica "em pé" e, ao ligar, já abre em tela cheia.
+### 🎬 Capa animada (16:4)
+- Personagem animada que levanta o visor, sorri e dá as boas-vindas **com a minha voz gravada**, com movimento sincronizado de boca e olhos.
+- A Bella, minha cachorrinha, acorda durante a cena.
+- Efeito de **parallax** que acompanha o mouse e efeitos de *glitch* no estilo neon.
+- Texto digitado em tempo real (efeito *typewriter*).
 
-## Estrutura
+### 🖥️ Computador interativo
+- Tela desligada com **botão de ligar**.
+- Sequência de **boot** ("SABRINA//DEV — carregando projetos… ok").
+- **Tela de login** animada e mensagem de "Acesso liberado!".
+- **Área de trabalho** synthwave com ícones neon, janelas que abrem e fecham e barra de tarefas.
+- Opção de **pular a introdução**, e o monitor **lembra o estado** ao recarregar a página.
+
+### 📂 Galeria de projetos
+- **8 projetos** do meu GitHub, com **filtro por categoria**: jogos, web, mobile e dados/mapas.
+- Cada projeto tem uma tela de detalhes com **carrossel de imagens**, descrição, tecnologias usadas e links.
+
+## 🛠️ Tecnologias e conceitos aplicados
+
+| Área | O que foi usado |
+|---|---|
+| **HTML5** | Estrutura semântica e elementos de áudio |
+| **CSS3** | Animações e *keyframes*, transições, Flexbox, Grid, variáveis CSS, efeitos neon e *glitch* |
+| **JavaScript** | Manipulação do DOM, eventos de mouse e teclado, controle de estados, *timers*, áudio, `localStorage` e código separado em módulos por tela |
+| **Assets** | Imagens otimizadas em **WebP** para carregar mais rápido |
+| **Deploy** | GitHub Pages |
+
+## 📁 Estrutura de pastas
 
 ```
 portfolio/
-├── index.html
+├── index.html          # Página principal
 ├── css/
-│   ├── base.css         cores e reset
-│   ├── capa.css         capa animada
-│   ├── mesa.css         fundo da mesa, monitor e tela cheia
-│   ├── abertura.css     tela desligada, ligando, login, boas-vindas
-│   ├── desktop.css      papel de parede, ícones, janela, barra de tarefas
-│   └── projetos.css     galeria de projetos (cards, filtros, carrossel)
+│   ├── base.css        # Cores, fontes e estilos gerais
+│   ├── capa.css        # Capa animada
+│   ├── mesa.css        # Mesa e monitor
+│   ├── abertura.css    # Boot e login
+│   ├── desktop.css     # Área de trabalho e janelas
+│   └── projetos.css    # Galeria de projetos
 ├── js/
-│   ├── capa.js          sequência da capa, fala e Bella
-│   ├── projetos.js      LISTA DE PROJETOS (edite aqui!) e a galeria
-│   ├── apps.js          LISTA DE APPS E CONTEÚDOS (edite aqui!)
-│   ├── mesa.js          monitor ligado e tela cheia
-│   ├── abertura.js      sequência da abertura do monitor
-│   └── desktop.js       ícones e janelas
+│   ├── capa.js         # Animação da personagem, falas e poses
+│   ├── mesa.js         # Interação com a mesa e o monitor
+│   ├── abertura.js     # Textos do boot e do login
+│   ├── desktop.js      # Janelas e barra de tarefas
+│   ├── apps.js         # Conteúdo das janelas
+│   └── projetos.js     # Lista de projetos da galeria
 └── assets/
-    ├── capa/            poses, bocas, olhos, quarto, Bella e o áudio fala.mp3
-    ├── projetos/        imagens de cada projeto (uma pasta por projeto)
-    └── img/
-        ├── avatar.webp  rosto da personagem (login e barra de tarefas)
-        └── mesa.webp    a mesa do quarto (fundo da parte do monitor)
+    ├── capa/           # Poses, boca, olhos, cachorra e áudio
+    ├── img/            # Avatar e mesa
+    └── projetos/       # Imagens de cada projeto
 ```
 
-## Como mudar as coisas
+## 🚀 Como executar
 
-- **Apps e conteúdos das janelas:** `js/apps.js`.
-- **Projetos:** `js/projetos.js`. Para adicionar um, copie um bloco, mude os textos e coloque as imagens em `assets/projetos/nome-do-projeto/`.
-- **Textos do monitor:** topo do `js/abertura.js` (`TITULO`, `SUBTITULO` e as linhas de `BOOT`).
-- **Frase da capa e ordem das poses:** topo do `js/capa.js` (`FRASES`, `ORDEM_POSES`).
-- **Cores:** topo do `css/base.css`.
-- **Tamanho e posição da Bella:** `.cachorra` no `css/capa.css` (`left`, `top`, `width`).
-- **Papel de parede com imagem:** no topo do `css/desktop.css`, troque o valor de `--papel-de-parede` por
-  `url("../assets/img/wallpaper.webp") center / cover` e coloque o arquivo em `assets/img/`.
-- **Trocar o áudio da capa:** o volume da voz fica salvo em `VOLUME`, no `js/capa.js`. Se trocar o MP3, peça para gerar de novo.
+Não precisa instalar nada nem rodar servidor:
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/FontesSabrina/Portf-lio.git
+   ```
+2. Abra o arquivo `index.html` no navegador.
+
+> As fontes são carregadas do Google Fonts. Sem internet, o site usa fontes alternativas.
+
+## ✏️ Como personalizar
+
+| Quero mudar… | Arquivo |
+|---|---|
+| Projetos da galeria | `js/projetos.js` |
+| Conteúdo das janelas | `js/apps.js` |
+| Textos do boot e do login | `js/abertura.js` |
+| Falas e poses da capa | `js/capa.js` |
+| Cores do tema | `css/base.css` |
+
+## 👩‍💻 Autora
+
+**Sabrina Caetano Fontes**, estudante de Gestão da Tecnologia da Informação no IF Sudeste MG (Campus Muriaé), com foco em desenvolvimento Front-end.
+
+<p>
+  <a href="https://www.linkedin.com/in/sabrina-fontes-279957206/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+  <a href="https://github.com/FontesSabrina"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
+  <a href="mailto:sabrinacfontes@gmail.com"><img src="https://img.shields.io/badge/E--mail-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="E-mail"></a>
+</p>
