@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <a href="https://fontessabrina.github.io/Portf-lio/"><b>🔗 Acesse o portfólio online</b></a>
+  <a href="https://fontessabrina.github.io/portfolio/"><b>🔗 Acesse o portfólio online</b></a>
 </p>
 
 ---
@@ -83,7 +83,7 @@ Não precisa instalar nada nem rodar servidor:
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/FontesSabrina/Portf-lio.git
+   git clone https://github.com/FontesSabrina/portfolio.git
    ```
 2. Abra o arquivo `index.html` no navegador.
 
